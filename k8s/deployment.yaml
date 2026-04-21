@@ -24,3 +24,10 @@ spec:
             configMapKeyRef:
               name: app-td-config
               key: PROFESOR
+        volumeMounts:
+        - name: persistent-storage
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: persistent-storage
+        persistenVolumeClaim:
+          claimName: frontend-td-app-pvc
