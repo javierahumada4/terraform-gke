@@ -29,3 +29,11 @@ jobs:
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
+        # Espera a que el deployment esté listo antes de copiar
+        kubectl rollout status deployment/mi-deployment --timeout=120s
+
+        # Obtén el nombre del pod por label selector
+        POD_NAME=$(kubectl get pods -l app=mi-app -o jsonpath='{.items[0].metadata.name}')
+
+        # Copia local -> pod
+        kubectl cp ./templates/index.html "$POD_NAME:/index.html"
