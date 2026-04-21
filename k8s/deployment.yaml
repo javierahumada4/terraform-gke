@@ -29,5 +29,5 @@ spec:
           mountPath: /usr/share/nginx/html
       volumes:
       - name: persistent-storage
-        persistenVolumeClaim:
+        persistentVolumeClaim:
           claimName: frontend-td-app-pvc
