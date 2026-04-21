@@ -6,9 +6,9 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
-  GKE_ZONE: ${{ secrets.GKE_ZONE }}
+  GKE_ZONE: ${{ vars.GKE_ZONE }}
 
 jobs:
   deploy:
