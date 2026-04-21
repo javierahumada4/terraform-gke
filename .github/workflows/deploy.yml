@@ -9,6 +9,7 @@ env:
   PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
   GKE_ZONE: ${{ vars.GKE_ZONE }}
+  IMAGE_NAME: nginx
 
 jobs:
   deploy:
@@ -23,6 +24,13 @@ jobs:
     - uses: "google-github-actions/setup-gcloud@v2"
       with:
         install_components: "gke-gcloud-auth-plugin"
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t $IMAGE_NAME:$GITHUB_SHA .
+        docker build -t $IMAGE_NAME:latest .
+        docker push $IMAGE_NAME:$GITHUB_SHA
+        docker push $IMAGE_NAME:latest
 
     - name: Deploy to GKE
       run: |
