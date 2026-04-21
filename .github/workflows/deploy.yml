@@ -26,9 +26,9 @@ jobs:
 
     - name: Deploy YAMLs to GKE
       run: |
-        kubectl apply -f service.yaml
-        kubectl apply -f deployment.yaml
-        kubectl apply -f nginx-pocho.yml
+        kubectl apply -f k8s/service.yaml
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/nginx-pocho.yml
         
         # Esperar a que el pod esté listo
         kubectl rollout status deployment/frontend-td-app
