@@ -18,3 +18,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
+        env:
+        - name: PROFESOR
+          valueFrom:
+            configMapKeyRef:
+              name: app-td-config
+              key: PROFESOR
