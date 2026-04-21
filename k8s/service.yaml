@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-appgke-service
+  name: frontend-app-td-service
 spec:
   type: LoadBalancer
   selector:
-    app: python-appgke
+    app: frontend-td-app
   ports:
     - protocol: TCP
       port: 80

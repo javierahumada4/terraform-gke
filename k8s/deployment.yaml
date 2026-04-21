@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-appgke
+  name: frontend-td-app
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
-      app: python-appgke
+      app: frontend-td-app
   template:
     metadata:
       labels:
-        app: python-appgke
+        app: frontend-td-app
     spec:
       containers:
-      - name: python-appgke
-        image: gcr.io/lab9-6969/python-appgke:latest
+      - name: frontend-td-app
+        image: nginx:1.17.3
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
