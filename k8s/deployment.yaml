@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-td-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: frontend-td-app
+  template:
+    metadata:
+      labels:
+        app: frontend-td-app
+    spec:
+      containers:
+      - name: frontend-td-app
+        image: nginx:1.17.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
