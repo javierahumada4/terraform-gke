@@ -38,4 +38,4 @@ jobs:
         POD_NAME=$(kubectl get pods -l app=frontend-td-app -o jsonpath='{.items[0].metadata.name}')
         
         # Copiar el index.html al pod
-        kubectl cp index.html $POD_NAME:/usr/share/nginx/html/index.html
+        kubectl cp ./templates/index.html $POD_NAME:/usr/share/nginx/html/index.html
