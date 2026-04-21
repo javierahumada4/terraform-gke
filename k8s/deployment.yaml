@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend-td-app
-        image: nginx:1.17.3
+        image: nginx:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
