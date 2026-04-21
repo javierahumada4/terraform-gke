@@ -29,5 +29,4 @@ jobs:
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
-        POD_NAME=$(kubectl get pods -l app=mi-app -o jsonpath='{.items[0].metadata.name}')
-        kubectl cp ./templates/index.html "$POD_NAME:/index.html"
+        kubectl cp ./templates/index.html "$(kubectl get pods -l app=mi-app -o jsonpath='{.items[0].metadata.name}')/index.html"
